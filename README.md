@@ -29,6 +29,37 @@ v1.normalise();
 v1.changeMagnitude(10);
 ```
 
+### Rect Operations
+```typescript
+import { Rect } from '@kedibasi/utils';
+
+// Create rectangles
+const rect = new Rect(10, 20, 100, 50); // top, left, width, height
+const emptyRect = Rect.emptyRect();
+
+// Rectangle operations
+rect.normalize(); // Ensures width and height are positive
+rect.clone(); // Creates a copy
+rect.contain(0, 0, 800, 600); // Clips rectangle within bounds
+rect.shifted(10); // Returns new rect shifted by amount
+rect.resizedWithMagnitude(2); // Scale the rectangle
+
+// Rectangle calculations
+rect.doesInclude(otherRect); // Check if contains another rect
+rect.doesIntersectWith(otherRect); // Check intersection
+rect.coordsInRect(x, y); // Check if point is inside
+rect.horizontalCenter(); // Get center X coordinate
+rect.verticalCenter(); // Get center Y coordinate
+
+// Accessors
+rect.bottom(); // top + height
+rect.right(); // left + width
+
+// Serialization
+const obj = rect.toObject();
+const newRect = Rect.fromObject(obj);
+```
+
 ### Bezier Curves
 ```typescript
 import { Bezier, TPoint } from '@kedibasi/utils';
