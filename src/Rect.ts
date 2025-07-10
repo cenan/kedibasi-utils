@@ -153,4 +153,11 @@ export class Rect {
             height: this.height
         };
     }
+
+    /**
+     * Calculates the area of the rectangle (width × height)
+     */
+    area(): number {
+        return this.width * this.height;
+    }
 }

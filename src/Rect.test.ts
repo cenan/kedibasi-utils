@@ -76,4 +76,26 @@ describe("Rect", function() {
       expect(rect.doesIntersectWith(r3)).toBe(false);
     });
   });
+
+  describe("#area", function() {
+    it("should calculate area correctly for positive dimensions", function() {
+      const r = new Rect(0, 0, 10, 20);
+      expect(r.area()).toBe(200);
+    });
+
+    it("should calculate area correctly for negative dimensions", function() {
+      const r = new Rect(0, 0, -10, -20);
+      expect(r.area()).toBe(200); // Area is always positive
+    });
+
+    it("should return 0 for zero dimensions", function() {
+      const r1 = new Rect(0, 0, 0, 10);
+      const r2 = new Rect(0, 0, 10, 0);
+      const r3 = new Rect(0, 0, 0, 0);
+
+      expect(r1.area()).toBe(0);
+      expect(r2.area()).toBe(0);
+      expect(r3.area()).toBe(0);
+    });
+  });
 });
